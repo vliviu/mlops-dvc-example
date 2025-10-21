@@ -1,0 +1,8 @@
+data:
+  raw_path: data/winequality-red.csv
+featurize:
+  test_size: 0.2
+train:
+  random_state: 42
+  n_estimators: 50
+  max_depth: 5

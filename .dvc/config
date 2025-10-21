@@ -1,4 +1,5 @@
 [core]
     remote = local_store
+    autostage = true
 ['remote "local_store"']
-    url = ../${LOCAL_DVC_REMOTE}
+    url = C:\Users\liviu\projects\BankGroz\dvc-storage

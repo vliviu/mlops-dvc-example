@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/liviu/projects/BankGroz/mlops-dvc-example/mlruns/0/215f3d59945a4725b23c0d35050cef82/artifacts
+end_time: 1761047661756
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 215f3d59945a4725b23c0d35050cef82
+run_name: monumental-hound-169
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761047655928
+status: 3
+tags: []
+user_id: liviu

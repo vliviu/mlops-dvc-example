@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/liviu/projects/BankGroz/mlops-dvc-example/mlruns/0/models/m-9f49f953b3914988aebe6bc3507aeb50/artifacts
+creation_timestamp: 1761048198098
+experiment_id: '0'
+last_updated_timestamp: 1761048201759
+model_id: m-9f49f953b3914988aebe6bc3507aeb50
+model_type: null
+name: model
+source_run_id: 2bc2aa4099b24dd2864a5e8a8d28672f
+status: 2
+status_message: null
