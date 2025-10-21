@@ -1,0 +1,72 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py data/winequality-red.csv data/raw/wine.csv
+    deps:
+    - path: data/winequality-red.csv
+      hash: md5
+      md5: 4d83dc3db76caaafc421ef199761e7fa
+      size: 85797
+    - path: src/prepare.py
+      hash: md5
+      md5: 47cbd30b260fc285d686538d566b3a8c
+      size: 2061
+    outs:
+    - path: data/raw/wine.csv
+      hash: md5
+      md5: 984cd3fee6847e8327fe5a7ae46db4ca
+      size: 93599
+  featurize:
+    cmd: python src/featurize.py data/raw/wine.csv data/processed/train.csv data/processed/test.csv
+      0.2 42
+    deps:
+    - path: data/raw/wine.csv
+      hash: md5
+      md5: 984cd3fee6847e8327fe5a7ae46db4ca
+      size: 93599
+    - path: params.yaml
+      hash: md5
+      md5: a8a71432c57a1e3359093bcb10659057
+      size: 139
+    - path: src/featurize.py
+      hash: md5
+      md5: 8b610acad58538a5714ac291ed46f5f3
+      size: 1681
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: ace262b3a99407d362bae28340a09722
+      size: 18832
+    - path: data/processed/train.csv
+      hash: md5
+      md5: f8702ef542a935837ca056a87b35379d
+      size: 74914
+  train:
+    cmd: python src/train.py data/processed/train.csv data/processed/test.csv models/model.joblib
+      metrics.json
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: ace262b3a99407d362bae28340a09722
+      size: 18832
+    - path: data/processed/train.csv
+      hash: md5
+      md5: f8702ef542a935837ca056a87b35379d
+      size: 74914
+    - path: params.yaml
+      hash: md5
+      md5: a8a71432c57a1e3359093bcb10659057
+      size: 139
+    - path: src/train.py
+      hash: md5
+      md5: af89b1717b2a0489167ad76569854eb0
+      size: 4688
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: ebb38366eeba40f103c0111b4c088fdc
+      size: 81
+    - path: models/model.joblib
+      hash: md5
+      md5: 25d1b86e8da4af0de46ddb814463541a
+      size: 220049
