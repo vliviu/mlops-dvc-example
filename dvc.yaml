@@ -1,0 +1,36 @@
+stages:
+  prepare:
+    cmd: python src/prepare.py data/winequality-red.csv data/raw/wine.csv
+    deps:
+    - src/prepare.py
+    - data/winequality-red.csv
+    outs:
+    - data/raw/wine.csv
+
+  featurize:
+    cmd: python src/featurize.py data/raw/wine.csv data/processed/train.csv data/processed/test.csv
+      ${featurize.test_size} ${train.random_state}
+    deps:
+    - src/featurize.py
+    - data/raw/wine.csv
+    - params.yaml
+    outs:
+    - data/processed/train.csv
+    - data/processed/test.csv
+
+  train:
+    cmd: python src/train.py data/processed/train.csv data/processed/test.csv models/model.joblib
+      metrics/metrics.json
+    deps:
+    - data/processed/test.csv
+    - data/processed/train.csv
+    - src/train.py
+    params:
+    - train.max_depth
+    - train.n_estimators
+    - train.random_state
+    outs:
+    - models/model.joblib
+    metrics:
+    - metrics/metrics.json:
+        cache: false
